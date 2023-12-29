@@ -163,19 +163,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\luuch\\.nuget\\packages\\": {}
+    "C:\\Users\\HI\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\New folder (3)\\New folder\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
+      "projectUniqueName": "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
       "projectName": "MyMediaPlayer",
-      "projectPath": "C:\\New folder (3)\\New folder\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
-      "packagesPath": "C:\\Users\\luuch\\.nuget\\packages\\",
-      "outputPath": "C:\\New folder (3)\\New folder\\MediaPlayer\\MediaPlayer\\obj\\",
+      "projectPath": "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
+      "packagesPath": "C:\\Users\\HI\\.nuget\\packages\\",
+      "outputPath": "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\luuch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

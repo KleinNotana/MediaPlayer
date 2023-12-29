@@ -28,13 +28,14 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="350" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200" />
                 </Grid.ColumnDefinitions>
                 
                 <!--Song's Name-->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                     <TextBlock Text="{Binding Path, Converter={StaticResource PathToNameConverter}}" Foreground="{StaticResource titleColor1}" FontSize="20" FontWeight="Medium" FontFamily="Montserrat" />
-                    <MediaElement x:Name="Preview" Width="200" Height="100"   LoadedBehavior="Manual" Stretch="Fill"  Margin="20,0"/>
+                    
 
                 </StackPanel>
                 
@@ -77,9 +78,13 @@
                     </StackPanel>
 
                 </StackPanel>
+
+                <StackPanel Grid.Column="2" >
+                    <MediaElement x:Name="Preview" Width="200" Height="100"   LoadedBehavior="Manual" Stretch="Fill"  Margin="20,0"/>
+                </StackPanel>
                 
                 <!--Volume-->
-                <StackPanel Grid.Column="2" Orientation="Horizontal" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Grid.Column="3" Orientation="Horizontal" Height="70" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button Name="btnMute" Style="{StaticResource iconButton}" Margin="5,0,5,0" Tag="{StaticResource titleColor1}" >
                         <fa:IconImage Icon="VolumeUp" Style="{StaticResource iconButtonIcon}" Width="20" Height="20"/>
                     </Button>
