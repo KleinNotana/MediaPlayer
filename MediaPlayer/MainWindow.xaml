@@ -269,7 +269,7 @@
                                     <ColumnDefinition Width="*" />
                                     
                                 </Grid.ColumnDefinitions>
-                                <MediaElement x:Name="Player" Grid.Column="1"  LoadedBehavior="Manual" Stretch="None"  Margin="20,0"/>
+                                <MediaElement x:Name="Player" Grid.Column="1"  LoadedBehavior="Manual" Stretch="Fill"  Margin="20,0"/>
                                 <ListView Name="listSongs"  Grid.Column="0"  Background="Transparent" ScrollViewer.CanContentScroll="True"
                                      BorderThickness="0" SelectionChanged="listSongs_SelectionChanged" ItemsSource="{Binding ElementName=listPlaylists, Path=SelectedItem.Files}"
                                      Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" >
