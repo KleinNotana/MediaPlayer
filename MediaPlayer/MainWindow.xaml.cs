@@ -326,6 +326,7 @@ namespace MyMediaPlayer
         //display preview when seek time slider
         private void slider_MouseEnter(object sender, MouseEventArgs e)
         {   
+            Preview.Visibility = Visibility.Visible;
             
             var slider = sender as Slider;
             
@@ -458,6 +459,11 @@ namespace MyMediaPlayer
         private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             Player.Volume = sliderVolume.Value / 100;
+        }
+
+        private void slider_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Preview.Visibility = Visibility.Hidden;
         }
     }
 
