@@ -338,11 +338,7 @@ namespace MyMediaPlayer
             //wait for 0.1 second
             System.Threading.Thread.Sleep(100);
             Preview.Pause();
-            //MessageBox.Show(timeString);
-       /*if (timeString.Length == 0)
-            timeControlBar.ToolTip = ;*/
-
-            //MessageBox.Show("Mouse enter");
+            
         }
 
         //mouse move on seek time slider

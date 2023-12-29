@@ -168,11 +168,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\New folder (3)\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
+      "projectUniqueName": "C:\\New folder (3)\\New folder\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
       "projectName": "MyMediaPlayer",
-      "projectPath": "C:\\New folder (3)\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
+      "projectPath": "C:\\New folder (3)\\New folder\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
       "packagesPath": "C:\\Users\\luuch\\.nuget\\packages\\",
-      "outputPath": "C:\\New folder (3)\\MediaPlayer\\MediaPlayer\\obj\\",
+      "outputPath": "C:\\New folder (3)\\New folder\\MediaPlayer\\MediaPlayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\luuch\\AppData\\Roaming\\NuGet\\NuGet.Config",

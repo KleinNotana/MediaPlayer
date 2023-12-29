@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "v1NvEqOriYVJcPDwhfyBAdiYK1Y+xHBg4zMDNNJ4osEjVoIf8bYfS59h2LsKArP4GmOy+0tF5L7qGViWsO4hFQ==",
+  "dgSpecHash": "Hcn7JrZj3qEqWL2fmm/dBv94ElJo7ooVjZ0RFWdwNyo/S6eiClIJQISez+iMpBTHaaW/nvc3xavhyn0my7vNfw==",
   "success": true,
-  "projectFilePath": "C:\\New folder (3)\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
+  "projectFilePath": "C:\\New folder (3)\\New folder\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\luuch\\.nuget\\packages\\fody\\6.6.4\\fody.6.6.4.nupkg.sha512",
     "C:\\Users\\luuch\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
