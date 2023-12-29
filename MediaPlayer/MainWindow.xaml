@@ -263,20 +263,29 @@
                             </Grid>
                             
                             <!-- List songs-->
-                            <ListView Name="listSongs" Grid.Row ="2" Background="Transparent" ScrollViewer.CanContentScroll="True"
-                                      BorderThickness="0" SelectionChanged="listSongs_SelectionChanged" ItemsSource="{Binding ElementName=listPlaylists, Path=SelectedItem.Files}"
-                                        Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" >
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="50">
-                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock Text="{Binding Path, Converter={StaticResource PathToNameConverter}}" 
-                                                           Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" />
+                            <Grid Grid.Row ="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="*" />
+                                    
+                                </Grid.ColumnDefinitions>
+                                <MediaElement x:Name="Player" Grid.Column="1"  LoadedBehavior="Manual" Stretch="None"  Margin="20,0"/>
+                                <ListView Name="listSongs"  Grid.Column="0"  Background="Transparent" ScrollViewer.CanContentScroll="True"
+                                     BorderThickness="0" SelectionChanged="listSongs_SelectionChanged" ItemsSource="{Binding ElementName=listPlaylists, Path=SelectedItem.Files}"
+                                     Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" >
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="50">
+                                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding Path, Converter={StaticResource PathToNameConverter}}" 
+                               Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" />
+                                                </StackPanel>
                                             </StackPanel>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+                            
                             
                         </Grid>
                     </Grid>

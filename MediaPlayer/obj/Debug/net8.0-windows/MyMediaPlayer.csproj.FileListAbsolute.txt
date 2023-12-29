@@ -29,3 +29,34 @@ D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\obj\Debug\net8.0-w
 D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.genruntimeconfig.cache
 D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\ref\MyMediaPlayer.dll
 D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\New folder (3)\MediaPlayer\MediaPlayer\bin\Debug\net8.0-windows\MyMediaPlayer.exe
+C:\New folder (3)\MediaPlayer\MediaPlayer\bin\Debug\net8.0-windows\MyMediaPlayer.deps.json
+C:\New folder (3)\MediaPlayer\MediaPlayer\bin\Debug\net8.0-windows\MyMediaPlayer.runtimeconfig.json
+C:\New folder (3)\MediaPlayer\MediaPlayer\bin\Debug\net8.0-windows\MyMediaPlayer.dll
+C:\New folder (3)\MediaPlayer\MediaPlayer\bin\Debug\net8.0-windows\MyMediaPlayer.pdb
+C:\New folder (3)\MediaPlayer\MediaPlayer\bin\Debug\net8.0-windows\FontAwesome.Sharp.dll
+C:\New folder (3)\MediaPlayer\MediaPlayer\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.csproj.AssemblyReference.cache
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\Styles\ButtonStyles.baml
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\Styles\Colors.baml
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\App.g.cs
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer_MarkupCompile.cache
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer_MarkupCompile.lref
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\App.baml
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MainWindow.baml
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.g.resources
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.AssemblyInfoInputs.cache
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.AssemblyInfo.cs
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.csproj.CoreCompileInputs.cache
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.sourcelink.json
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.csproj.Fody.CopyLocal.cache
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.csproj.Fody.RuntimeCopyLocal.cache
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.csproj.CopyComplete
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.dll
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\refint\MyMediaPlayer.dll
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.pdb
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.genruntimeconfig.cache
+C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\ref\MyMediaPlayer.dll

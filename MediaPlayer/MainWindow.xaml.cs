@@ -29,7 +29,7 @@ namespace MyMediaPlayer
 
         MediaFile currentFile = null;
 
-        MediaPlayer mediaPlayer = new MediaPlayer();
+        //MediaPlayer mediaPlayer = new MediaPlayer();
 
         bool isPlaying = false;
         bool isShuffle = false;
@@ -48,7 +48,7 @@ namespace MyMediaPlayer
 
             listPlaylists.ItemsSource = playlists;
 
-            mediaPlayer.MediaEnded += (s, e) =>
+            Player.MediaEnded += (s, e) =>
             {
                 mediaPlayerEnded();
             };
@@ -155,14 +155,14 @@ namespace MyMediaPlayer
             {
                 if(isPlaying)
                 {
-                    mediaPlayer.Pause();
+                    Player.Pause();
                     iconPlay.Icon = FontAwesome.Sharp.IconChar.Play;
                     iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Play;
                     isPlaying = false;
                 }
                 else
                 {
-                    mediaPlayer.Play();
+                    Player.Play();
                     iconPlay.Icon = FontAwesome.Sharp.IconChar.Pause;
                     iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Pause;
                     isPlaying = true;
@@ -247,11 +247,13 @@ namespace MyMediaPlayer
             if (selectedFile != null)
             {
                 currentFile = selectedFile;
-                mediaPlayer.Open(new Uri(selectedFile.Path));
 
-                mediaPlayer.MediaOpened += (s, e) =>
+                //Player.Open(new Uri(selectedFile.Path));
+                Player.Source = new Uri(selectedFile.Path);
+
+                Player.MediaOpened += (s, e) =>
                 {
-                    Timer timer = new Timer() { CurrentTime = mediaPlayer.Position, TotalTime = mediaPlayer.NaturalDuration.TimeSpan };
+                    Timer timer = new Timer() { CurrentTime = Player.Position, TotalTime = Player.NaturalDuration.TimeSpan };
                     timeControlBar.DataContext = timer;
                 };
 
@@ -262,12 +264,12 @@ namespace MyMediaPlayer
                     Timer timer = timeControlBar.DataContext as Timer;
                     if (timer != null)
                     {
-                        timer.CurrentTime = mediaPlayer.Position;
+                        timer.CurrentTime = Player.Position;
                     }
                 };
                 timer.Start();
 
-                mediaPlayer.Play();
+                Player.Play();
                 iconPlay.Icon = FontAwesome.Sharp.IconChar.Pause;
                 iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Pause;
                 isPlaying = true;
@@ -282,9 +284,9 @@ namespace MyMediaPlayer
 
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (mediaPlayer.NaturalDuration.HasTimeSpan && !isDraggingTimeSlider)
+            if (Player.NaturalDuration.HasTimeSpan && !isDraggingTimeSlider)
             {
-                mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
+                Player.Position = TimeSpan.FromSeconds(slider.Value);
             }
         }
 
@@ -303,8 +305,8 @@ namespace MyMediaPlayer
         {
             if (isRepeat)
             {
-                mediaPlayer.Position = TimeSpan.Zero;
-                mediaPlayer.Play();
+               Player.Position = TimeSpan.Zero;
+               Player.Play();
             }
             else
             {
