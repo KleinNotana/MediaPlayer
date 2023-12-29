@@ -16,6 +16,8 @@ using System.ComponentModel;
 using Microsoft.Win32;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Windows.Threading;
+using System.IO;
+using System.Windows.Media.Animation;
 
 
 namespace MyMediaPlayer
@@ -250,7 +252,7 @@ namespace MyMediaPlayer
 
                 //Player.Open(new Uri(selectedFile.Path));
                 Player.Source = new Uri(selectedFile.Path);
-
+                
                 Player.MediaOpened += (s, e) =>
                 {
                     Timer timer = new Timer() { CurrentTime = Player.Position, TotalTime = Player.NaturalDuration.TimeSpan };
@@ -276,8 +278,8 @@ namespace MyMediaPlayer
                 filePlayer.DataContext = selectedFile;
 
                 //create a new object include current time and max time of mediaPlayer
-                
-                
+                Preview.Source = new Uri(currentFile.Path);
+
             }
         }
 
@@ -317,6 +319,56 @@ namespace MyMediaPlayer
                 }
             }
         }
+
+        //display preview when seek time slider
+        private void slider_MouseEnter(object sender, MouseEventArgs e)
+        {   
+            
+            var slider = sender as Slider;
+            
+            var position = e.GetPosition(slider);
+            var value = position.X / slider.ActualWidth * slider.Maximum;
+            var time = TimeSpan.FromSeconds(value);
+            var timeString = time.ToString(@"mm\:ss");
+            
+            
+            
+            Preview.Position = time;
+            Preview.Play();
+            //wait for 0.1 second
+            System.Threading.Thread.Sleep(100);
+            Preview.Pause();
+            //MessageBox.Show(timeString);
+       /*if (timeString.Length == 0)
+            timeControlBar.ToolTip = ;*/
+
+            //MessageBox.Show("Mouse enter");
+        }
+
+        //mouse move on seek time slider
+        private void slider_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+            
+            var slider = sender as Slider;
+            
+            var position = e.GetPosition(slider);
+            var value = position.X / slider.ActualWidth * slider.Maximum;
+            var time = TimeSpan.FromSeconds(value);
+            var timeString = time.ToString(@"mm\:ss");
+
+
+
+            Preview.Position = time;
+            Preview.Play();
+            //change volume
+            Preview.Volume = 0;
+            //wait for 0.1 second
+            System.Threading.Thread.Sleep(100);
+            Preview.Pause();
+        }
+
+        
     }
 
 

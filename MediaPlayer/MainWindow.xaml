@@ -34,6 +34,8 @@
                 <!--Song's Name-->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
                     <TextBlock Text="{Binding Path, Converter={StaticResource PathToNameConverter}}" Foreground="{StaticResource titleColor1}" FontSize="20" FontWeight="Medium" FontFamily="Montserrat" />
+                    <MediaElement x:Name="Preview" Width="200" Height="100"   LoadedBehavior="Manual" Stretch="Fill"  Margin="20,0"/>
+
                 </StackPanel>
                 
                 <!--Control-->
@@ -63,16 +65,17 @@
                         </Button>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="timeControlBar" MouseDown="timeControlBar_MouseDown" MouseUp="timeControlBar_MouseUp">
+                    <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="timeControlBar" MouseDown="timeControlBar_MouseDown" MouseUp="timeControlBar_MouseUp" >
                         <TextBlock Text="{Binding CurrentTime, Converter={StaticResource TimeSpanToStringConverter}}" Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" />
-                        <Slider Name="slider" Width="200" Margin="10,0,10,0" 
+                        <Slider Name="slider" Width="200" Margin="10,0,10,0" Height="50" 
                                 Maximum="{Binding TotalTime, Converter={StaticResource TimeSpanToSecondConverter}}" 
                                 Value="{Binding CurrentTime, Converter={StaticResource TimeSpanToSecondConverter}, Mode=TwoWay}"
-                                ValueChanged="slider_ValueChanged"/>
+                                ValueChanged="slider_ValueChanged"  MouseEnter="slider_MouseEnter" MouseMove="slider_MouseMove" />
 
                         <TextBlock Text="{Binding TotalTime, Converter={StaticResource TimeSpanToStringConverter}}" Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" />
-
+                        
                     </StackPanel>
+
                 </StackPanel>
                 
                 <!--Volume-->
@@ -265,11 +268,14 @@
                             <!-- List songs-->
                             <Grid Grid.Row ="2">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="400" />
                                     <ColumnDefinition Width="*" />
                                     
+                                    
                                 </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0"  Width="200" Height="200" Name="pImage"/>
                                 <MediaElement x:Name="Player" Grid.Column="1"  LoadedBehavior="Manual" Stretch="Fill"  Margin="20,0"/>
+                              
                                 <ListView Name="listSongs"  Grid.Column="0"  Background="Transparent" ScrollViewer.CanContentScroll="True"
                                      BorderThickness="0" SelectionChanged="listSongs_SelectionChanged" ItemsSource="{Binding ElementName=listPlaylists, Path=SelectedItem.Files}"
                                      Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" >
