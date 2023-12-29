@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "mzZ9lLCYsHQfWss0YzgS0aP6s2b5dGYN1lJh4VfPQrcst3EPIvxIPHOsDB+fEGLWmxyJpkUBtH2W45qXZ5YFTA==",
+  "dgSpecHash": "hEFPoFhqPe1EGBqbbs9N50uubcuqyWbd9W0JPj2OTW4OLYL1YfSOTr0he2QIArtvTBVbuJbRtBWGWBJAAin0yw==",
   "success": true,
-  "projectFilePath": "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\MediaPlayer.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HI\\.nuget\\packages\\fody\\6.6.4\\fody.6.6.4.nupkg.sha512",
+    "C:\\Users\\HI\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
+    "C:\\Users\\HI\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\HI\\.nuget\\packages\\propertychanged.fody\\4.1.0\\propertychanged.fody.4.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

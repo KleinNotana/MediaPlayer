@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace MediaPlayer
+namespace MyMediaPlayer
 {
     /// <summary>
     /// Interaction logic for App.xaml
