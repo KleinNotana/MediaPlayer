@@ -54,6 +54,9 @@ namespace MyMediaPlayer
             {
                 mediaPlayerEnded();
             };
+
+            sliderVolume.Value = 50;
+            Player.Volume = 0.5;
         }
 
         [DllImport("user32.dll")]
@@ -364,7 +367,98 @@ namespace MyMediaPlayer
             Preview.Pause();
         }
 
-        
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var playlist = listPlaylists.SelectedItem as Playlist;
+
+            if(isPlaying && playlist.Files.Contains(currentFile))
+            {
+                Player.Stop();
+                currentFile = null;
+                filePlayer.DataContext = null;
+                iconPlay.Icon = FontAwesome.Sharp.IconChar.Play;
+                iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Play;
+                isPlaying = false;
+            }
+
+            if (playlist != null)
+            {
+                playlists.Remove(playlist);
+            }
+
+            if(playlists.Count > 0)
+            {
+                listPlaylists.SelectedIndex = 0;
+            }
+
+            
+        }
+
+        private void btnEditPlaylist_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            button.ContextMenu.IsEnabled = true;
+            button.ContextMenu.PlacementTarget = button;
+            button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            button.ContextMenu.IsOpen = true;
+        }
+
+        private void btnDeleteFile_Click(object sender, RoutedEventArgs e)
+        {
+            var playlist = listPlaylists.SelectedItem as Playlist;
+            var selectedFile = listSongs.SelectedItem as MediaFile;
+
+
+            if (playlist != null && selectedFile != null)
+            {
+                if (isPlaying && playlist.Files.Contains(currentFile))
+                {
+                    Player.Stop();
+                    currentFile = null;
+                    filePlayer.DataContext = null;
+                    iconPlay.Icon = FontAwesome.Sharp.IconChar.Play;
+                    iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Play;
+                    isPlaying = false;
+                }
+
+                playlist.Files.Remove(selectedFile);
+            }
+        }
+
+        private void btnPlayPlaylist_Click(object sender, RoutedEventArgs e)
+        {
+            listSongs.SelectedIndex = 0;
+
+            currentFile = listSongs.SelectedItem as MediaFile;
+
+            if (currentFile != null)
+            {
+                if (isPlaying)
+                {
+                    Player.Pause();
+                    iconPlay.Icon = FontAwesome.Sharp.IconChar.Play;
+                    iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Play;
+                    isPlaying = false;
+                }
+                else
+                {
+                    Player.Play();
+                    iconPlay.Icon = FontAwesome.Sharp.IconChar.Pause;
+                    iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Pause;
+                    isPlaying = true;
+                }
+            }
+        }
+
+        private void sliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Player.Volume = sliderVolume.Value / 100;
+        }
     }
 
 

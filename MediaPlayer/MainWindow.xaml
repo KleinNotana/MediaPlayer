@@ -34,7 +34,7 @@
                 
                 <!--Song's Name-->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
-                    <TextBlock Text="{Binding Path, Converter={StaticResource PathToNameConverter}}" Foreground="{StaticResource titleColor1}" FontSize="20" FontWeight="Medium" FontFamily="Montserrat" />
+                    <TextBlock Text="{Binding Path, Converter={StaticResource PathToNameConverter}}" TextWrapping="WrapWithOverflow"  Foreground="{StaticResource titleColor1}" FontSize="20" FontWeight="Medium" FontFamily="Montserrat" />
                     
 
                 </StackPanel>
@@ -89,7 +89,7 @@
                         <fa:IconImage Icon="VolumeUp" Style="{StaticResource iconButtonIcon}" Width="20" Height="20"/>
                     </Button>
 
-                    <Slider Name="sliderVolume" Width="100" Margin="10,0,10,0" VerticalAlignment="Center"/>
+                    <Slider Name="sliderVolume" Width="100" Margin="10,0,10,0" VerticalAlignment="Center" ValueChanged="sliderVolume_ValueChanged" Maximum="100"/>
                 </StackPanel>
             </Grid>
             <Grid>
@@ -246,7 +246,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Button Grid.Column="0" Style="{StaticResource iconButton}" Tag="{StaticResource iconButtonColor}"  
-                                        Name="btnPlayPause"  Width="50" Height="50" Margin="10,0,0,0">
+                                        Name="btnPlayPlaylist"  Width="50" Height="50" Margin="10,0,0,0" Click="btnPlayPlaylist_Click">
                                     <Border Style="{StaticResource buttonBorder}" Background="{StaticResource color9}" >
                                         <fa:IconImage x:Name="iconPlay" Icon="Play" Style="{StaticResource iconButtonIcon}" Width="20" Height="20" />
                                     </Border>
@@ -260,9 +260,24 @@
                                 </Button>
 
                                 <Button Grid.Column="1" Style="{StaticResource iconButton}" Tag="{StaticResource color2}"  
-                                       Name="btnEdit"  Width="50" Height="50">
+                                       Name="btnEditPlaylist"  Width="50" Height="50" Click="btnEditPlaylist_Click">
                                     <fa:IconImage Icon="EllipsisH" Style="{StaticResource iconButtonIcon}" Width="20" Height="20" />
-                                    
+                                    <Button.ContextMenu>
+                                        <ContextMenu >
+                                            <MenuItem Header="Edit" Click="Edit_Click" >
+                                                <MenuItem.Icon>
+                                                    <fa:IconImage Icon="Edit" Width="15" Height="15" Foreground="{StaticResource foreground3}"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+
+                                            <MenuItem Header="Delete" Click="Delete_Click">
+                                                <MenuItem.Icon>
+                                                    <fa:IconImage Icon="Trash" Width="15" Height="15" Foreground="{StaticResource foreground3}"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+
                                 </Button>
 
                                 <TextBox Grid.Column="2" x:Name="txtSearch" Width="300" Height="40" Style="{StaticResource textBoxStyle2}" Tag="Search Song" KeyDown="txtSearch_KeyDown"/>
@@ -289,11 +304,21 @@
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="50">
                                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                                     <TextBlock Text="{Binding Path, Converter={StaticResource PathToNameConverter}}" 
-                               Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" />
+                                                    Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" />
                                                 </StackPanel>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
+
+                                    <ListView.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Remove" Click="btnDeleteFile_Click">
+                                                <MenuItem.Icon>
+                                                    <Image Source="Images/delete.png"/>
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </ListView.ContextMenu>
                                 </ListView>
                             </Grid>
                             

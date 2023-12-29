@@ -65,6 +65,7 @@
     <SolidColorBrush x:Key="iconButtonColor" Color="#000000"/>
     <SolidColorBrush x:Key="warningTextColor4" Color="#C13A22"/>
     <SolidColorBrush x:Key="cs_TextColor" Color="#FF333333"/>
+    <SolidColorBrush x:Key="foreground3" Color="#000000"/>
 
     <!--Panel Colors-->
     <SolidColorBrush x:Key="panelColor" Color="#200F53"/>
