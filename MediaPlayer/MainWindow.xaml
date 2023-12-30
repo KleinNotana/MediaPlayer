@@ -66,12 +66,15 @@
                         </Button>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="timeControlBar" MouseDown="timeControlBar_MouseDown" MouseUp="timeControlBar_MouseUp" >
+                    <StackPanel Orientation="Horizontal" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="timeControlBar" >
                         <TextBlock Text="{Binding CurrentTime, Converter={StaticResource TimeSpanToStringConverter}}" Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" />
                         <Slider Name="slider" Width="200" Margin="10,0,10,0" Height="15" 
                                 Maximum="{Binding TotalTime, Converter={StaticResource TimeSpanToSecondConverter}}" 
                                 Value="{Binding CurrentTime, Converter={StaticResource TimeSpanToSecondConverter}, Mode=TwoWay}"
-                                ValueChanged="slider_ValueChanged"  MouseEnter="slider_MouseEnter" MouseMove="slider_MouseMove" MouseLeave="slider_MouseLeave"/>
+                                ValueChanged="slider_ValueChanged"  MouseEnter="slider_MouseEnter" MouseMove="slider_MouseMove" MouseLeave="slider_MouseLeave"
+                                PreviewMouseLeftButtonDown="slider_PreviewMouseLeftButtonDown"
+                                PreviewMouseLeftButtonUp="slider_PreviewMouseLeftButtonUp"
+                                Thumb.DragCompleted="slider_DragCompleted"/>
 
                         <TextBlock Text="{Binding TotalTime, Converter={StaticResource TimeSpanToStringConverter}}" Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" />
                         
@@ -139,8 +142,8 @@
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                             <TextBlock Text="{Binding Name}" Foreground="{StaticResource titleColor1}" FontSize="16" FontWeight="Medium" FontFamily="Montserrat" />
                                             <TextBlock  Foreground="{StaticResource titleColor2}" FontSize="12" FontWeight="Medium" FontFamily="Montserrat" >
-                                    <Run Text="{Binding NumberOfFiles, Mode=OneWay}"/>
-                                    <Run Text=" songs"/>
+                                                <Run Text="{Binding NumberOfFiles, Mode=OneWay}"/>
+                                                <Run Text=" songs"/>
                                             </TextBlock>
                                         </StackPanel>
                                     </StackPanel>

@@ -56,10 +56,6 @@ namespace MyMediaPlayer
                 mediaPlayerEnded();
             };
 
-            if (ConfigurationManager.AppSettings["currentVolume"] != null)
-            {
-                sliderVolume.Value = double.Parse(ConfigurationManager.AppSettings["currentVolume"]);
-            }
 
             if (ConfigurationManager.AppSettings["currentPlaylist"] != null)
             {
@@ -89,6 +85,11 @@ namespace MyMediaPlayer
                     isStart = false;
                 }
             };
+
+            if (ConfigurationManager.AppSettings["currentVolume"] != null)
+            {
+                sliderVolume.Value = double.Parse(ConfigurationManager.AppSettings["currentVolume"]);
+            }
         }
 
         [DllImport("user32.dll")]
@@ -247,6 +248,7 @@ namespace MyMediaPlayer
                     playlist[n] = temp;
                 }
             }
+
             
         }
 
@@ -326,10 +328,18 @@ namespace MyMediaPlayer
                 };
                 timer.Start();
 
+                if (isStart)
+                {
+                    Player.Volume = 0;
+                }
+
                 Player.Play();
                 iconPlay.Icon = FontAwesome.Sharp.IconChar.Pause;
                 iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Pause;
                 isPlaying = true;
+
+                
+
                 filePlayer.DataContext = selectedFile;
 
                 Preview.Source = new Uri(currentFile.Path);
@@ -344,17 +354,6 @@ namespace MyMediaPlayer
             {
                 Player.Position = TimeSpan.FromSeconds(slider.Value);
             }
-        }
-
-
-        private void timeControlBar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            isDraggingTimeSlider = true;
-        }
-
-        private void timeControlBar_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            isDraggingTimeSlider = false;
         }
 
         private void mediaPlayerEnded()
@@ -543,6 +542,24 @@ namespace MyMediaPlayer
         private void slider_MouseLeave(object sender, MouseEventArgs e)
         {
             Preview.Visibility = Visibility.Hidden;
+        }
+
+        private void slider_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            isDraggingTimeSlider = true;
+        }
+
+        private void slider_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            isDraggingTimeSlider = false;
+        }
+
+        private void slider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
+        {
+            if (!isDraggingTimeSlider)
+            {
+                Player.Position = TimeSpan.FromSeconds(slider.Value);
+            }
         }
     }
 
