@@ -9,6 +9,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyMediaPlayer
-build_property.ProjectDir = C:\New folder (3)\MediaPlayer\MediaPlayer\
+build_property.ProjectDir = D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

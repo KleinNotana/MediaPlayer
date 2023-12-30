@@ -37,6 +37,7 @@ namespace MyMediaPlayer
         bool isShuffle = false;
         bool isRepeat = false;
         bool isDraggingTimeSlider = false;
+        bool isStart = true;
 
         public MainWindow()
         {
@@ -55,8 +56,39 @@ namespace MyMediaPlayer
                 mediaPlayerEnded();
             };
 
-            sliderVolume.Value = 50;
-            Player.Volume = 0.5;
+            if (ConfigurationManager.AppSettings["currentVolume"] != null)
+            {
+                sliderVolume.Value = double.Parse(ConfigurationManager.AppSettings["currentVolume"]);
+            }
+
+            if (ConfigurationManager.AppSettings["currentPlaylist"] != null)
+            {
+                listPlaylists.SelectedIndex = int.Parse(ConfigurationManager.AppSettings["currentPlaylist"]);
+            }
+
+            if (ConfigurationManager.AppSettings["currentFile"] != null)
+            {
+                listSongs.SelectedIndex = int.Parse(ConfigurationManager.AppSettings["currentFile"]);
+
+            }
+
+            Player.MediaOpened += (s, e) =>
+            {
+                if (isStart && ConfigurationManager.AppSettings["currentPosition"] != null)
+                {
+                    Player.Position = TimeSpan.Parse(ConfigurationManager.AppSettings["currentPosition"]);
+
+                    if (isPlaying)
+                    {
+                        Player.Pause();
+                        iconPlay.Icon = FontAwesome.Sharp.IconChar.Play;
+                        iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Play;
+                        isPlaying = false;
+                    }
+
+                    isStart = false;
+                }
+            };
         }
 
         [DllImport("user32.dll")]
@@ -87,13 +119,17 @@ namespace MyMediaPlayer
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            /*var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            config.AppSettings.Settings["LastView"].Value
+            config.AppSettings.Settings["currentPlaylist"].Value = listPlaylists.SelectedIndex.ToString();
+            config.AppSettings.Settings["currentVolume"].Value = sliderVolume.Value.ToString();
+            config.AppSettings.Settings["currentFile"].Value = listSongs.SelectedIndex.ToString();
+            config.AppSettings.Settings["currentPosition"].Value = Player.Position.ToString();
+
 
             config.Save(ConfigurationSaveMode.Minimal);
 
-            ConfigurationManager.RefreshSection("appSettings");*/
+            ConfigurationManager.RefreshSection("appSettings");
             JsonHelper.SaveToJson(playlists, "playlists.json");
             Application.Current.Shutdown();
         }
@@ -115,29 +151,29 @@ namespace MyMediaPlayer
         {
             var playlist = listPlaylists.SelectedItem as Playlist;
 
-            if (playlist != null)
+            if (playlist != null )
             {
                 this.DataContext = playlist;
             }
-            
 
-        }
-
-        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
-        {
 
         }
 
         private void listSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectFile();
+            if (Mouse.RightButton == MouseButtonState.Released)
+            {
+                // Xử lý sự kiện chỉ khi không phải là chuột phải
+                selectFile();
+            }
         }
 
         private void btnAddFiles_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "All files (*.*)|*.*";
+            //filer sound and video files
+            openFileDialog.Filter = "Media files (*.mp3, *.mp4, *.wav, *.avi, *.mkv) | *.mp3; *.mp4; *.wav; *.avi; *.mkv";
 
             if (openFileDialog.ShowDialog() == true)
             {
@@ -147,7 +183,10 @@ namespace MyMediaPlayer
                 {
                     foreach (var file in openFileDialog.FileNames)
                     {
-                        playlist.Files.Add(new MediaFile() { Path = file });
+                        if(!playlist.Files.Any(f => f.Path == file))
+                        {
+                            playlist.Files.Add(new MediaFile() { Path = file });
+                        }
                     }
                 }
 
@@ -247,10 +286,23 @@ namespace MyMediaPlayer
 
         private void selectFile()
         {
-            var selectedFile = listSongs.SelectedItem as MediaFile;
-
+            var selectedFile = listSongs.SelectedItem as MediaFile;           
+            
             if (selectedFile != null)
             {
+                var extension = System.IO.Path.GetExtension(selectedFile.Path);
+
+                if (extension == ".mp4" || extension == ".avi" || extension == ".mkv")
+                {
+                    Player.Visibility = Visibility.Visible;
+                    Preview.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    Player.Visibility = Visibility.Collapsed;
+                    Preview.Visibility = Visibility.Collapsed;
+                }
+
                 currentFile = selectedFile;
 
                 //Player.Open(new Uri(selectedFile.Path));
@@ -280,7 +332,6 @@ namespace MyMediaPlayer
                 isPlaying = true;
                 filePlayer.DataContext = selectedFile;
 
-                //create a new object include current time and max time of mediaPlayer
                 Preview.Source = new Uri(currentFile.Path);
 
             }
@@ -319,6 +370,14 @@ namespace MyMediaPlayer
                 if (selectedIndex < listSongs.Items.Count - 1)
                 {
                     listSongs.SelectedIndex = selectedIndex + 1;
+                }
+                else
+                {
+                    Player.Pause();
+                    iconPlay.Icon = FontAwesome.Sharp.IconChar.Play;
+                    iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Play;
+                    isPlaying = false;
+
                 }
             }
         }
@@ -370,7 +429,17 @@ namespace MyMediaPlayer
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            var playlist = listPlaylists.SelectedItem as Playlist;
+            if (playlist != null)
+            {
+                EditPlaylistWindow editPlaylistWindow = new EditPlaylistWindow(playlist);
 
+                if (editPlaylistWindow.ShowDialog() == true)
+                {
+                    var updatedPlaylist = editPlaylistWindow.editedPlaylist;
+                    updatedPlaylist.CopyProperties(playlist);
+                }
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -385,6 +454,9 @@ namespace MyMediaPlayer
                 iconPlay.Icon = FontAwesome.Sharp.IconChar.Play;
                 iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Play;
                 isPlaying = false;
+
+                Player.Visibility = Visibility.Collapsed;
+                Preview.Visibility = Visibility.Collapsed;
             }
 
             if (playlist != null)
@@ -396,6 +468,8 @@ namespace MyMediaPlayer
             {
                 listPlaylists.SelectedIndex = 0;
             }
+
+
 
             
         }
@@ -417,7 +491,9 @@ namespace MyMediaPlayer
 
             if (playlist != null && selectedFile != null)
             {
-                if (isPlaying && playlist.Files.Contains(currentFile))
+                //check current file is selected
+
+                if (isPlaying && currentFile == selectedFile)
                 {
                     Player.Stop();
                     currentFile = null;
@@ -425,6 +501,9 @@ namespace MyMediaPlayer
                     iconPlay.Icon = FontAwesome.Sharp.IconChar.Play;
                     iconPlayPause.Icon = FontAwesome.Sharp.IconChar.Play;
                     isPlaying = false;
+
+                    Player.Visibility = Visibility.Collapsed;
+                    Preview.Visibility = Visibility.Collapsed;
                 }
 
                 playlist.Files.Remove(selectedFile);

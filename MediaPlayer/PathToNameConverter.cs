@@ -16,10 +16,15 @@ namespace MyMediaPlayer
             if (path == null)
                 return null;
             string[] parts = path.Split('\\');
+
+            var fileName = parts[parts.Length - 1];
             //eliminate the extension
-            string[] nameParts = parts[parts.Length - 1].Split('.');
-            return nameParts[0];
             
+            int lastDotIndex = fileName.LastIndexOf('.');
+            if (lastDotIndex == -1)
+                return fileName;
+            
+            return fileName.Substring(0, lastDotIndex);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

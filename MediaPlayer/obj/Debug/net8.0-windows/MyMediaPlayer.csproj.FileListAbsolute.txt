@@ -91,3 +91,6 @@ C:\New folder (3)\New folder\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\re
 C:\New folder (3)\New folder\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.pdb
 C:\New folder (3)\New folder\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\MyMediaPlayer.genruntimeconfig.cache
 C:\New folder (3)\New folder\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\ref\MyMediaPlayer.dll
+D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\EditPlaylistWindow.g.cs
+D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\EditPlaylistWindow.baml
+D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\bin\Debug\net8.0-windows\MyMediaPlayer.dll.config

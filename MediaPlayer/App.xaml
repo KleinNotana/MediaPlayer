@@ -13,6 +13,7 @@
             <local:PathToNameConverter x:Key="PathToNameConverter" />
             <local:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
             <local:TimeSpanToSecondConverter x:Key="TimeSpanToSecondConverter" />
+            <local:RelativeToAbsoluteConverter x:Key="RelativeToAbsoluteConverter" />
         </ResourceDictionary>
 
         

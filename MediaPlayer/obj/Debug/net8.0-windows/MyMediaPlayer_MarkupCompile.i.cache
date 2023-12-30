@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\New folder (3)\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\
+D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\obj\Debug\net8.0-windows\
 MyMediaPlayer
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\New folder (3)\MediaPlayer\MediaPlayer\App.xaml
-3905165784
+D:\HCMUS\thirdyear\semi1\windows\task\MediaPlayer\MediaPlayer\App.xaml
+4-440502468
 
-13966946760
-2101749798270
-MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\Colors.xaml;
+16-1867558613
+210-268830409
+EditPlaylistWindow.xaml;MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\Colors.xaml;
 
 True
 
