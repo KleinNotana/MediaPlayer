@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj": {}
+    "C:\\New folder (3)\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj": {}
   },
   "projects": {
-    "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj": {
+    "C:\\New folder (3)\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
+        "projectUniqueName": "C:\\New folder (3)\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
         "projectName": "MyMediaPlayer",
-        "projectPath": "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
-        "packagesPath": "C:\\Users\\HI\\.nuget\\packages\\",
-        "outputPath": "D:\\HCMUS\\thirdyear\\semi1\\windows\\task\\MediaPlayer\\MediaPlayer\\obj\\",
+        "projectPath": "C:\\New folder (3)\\MediaPlayer\\MediaPlayer\\MyMediaPlayer.csproj",
+        "packagesPath": "C:\\Users\\luuch\\.nuget\\packages\\",
+        "outputPath": "C:\\New folder (3)\\MediaPlayer\\MediaPlayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\luuch\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

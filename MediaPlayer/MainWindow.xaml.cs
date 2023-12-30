@@ -227,7 +227,7 @@ namespace MyMediaPlayer
             {
                 isShuffle = true;
                 iconShuffle.Foreground = Brushes.Red;
-                shufflePlaylist();
+                //shufflePlaylist();
             }
         }
 
@@ -264,6 +264,20 @@ namespace MyMediaPlayer
         private void btnNext_Click(object sender, RoutedEventArgs e)
         {
             var selectedIndex = listSongs.SelectedIndex;
+            if(isShuffle)
+            {
+                //get random index
+                Random random = new Random();
+                int n = listSongs.Items.Count;
+                int k = random.Next(n + 1);
+                while (k == selectedIndex || k==selectedIndex+1)
+                {
+                    k = random.Next(n );
+                }
+                listSongs.SelectedIndex = k;
+                return;
+
+            }
             if (selectedIndex < listSongs.Items.Count - 1)
             {
                 listSongs.SelectedIndex = selectedIndex + 1;
@@ -366,6 +380,20 @@ namespace MyMediaPlayer
             else
             {
                 var selectedIndex = listSongs.SelectedIndex;
+                if (isShuffle)
+                {
+                    //get random index
+                    Random random = new Random();
+                    int n = listSongs.Items.Count;
+                    int k = random.Next(n + 1);
+                    while (k == selectedIndex || k == selectedIndex + 1)
+                    {
+                        k = random.Next(n);
+                    }
+                    listSongs.SelectedIndex = k;
+                    return;
+
+                }
                 if (selectedIndex < listSongs.Items.Count - 1)
                 {
                     listSongs.SelectedIndex = selectedIndex + 1;
@@ -382,34 +410,40 @@ namespace MyMediaPlayer
         }
 
         //display preview when seek time slider
-        private void slider_MouseEnter(object sender, MouseEventArgs e)
+        private async void slider_MouseEnter(object sender, MouseEventArgs e)
         {   
             Preview.Visibility = Visibility.Visible;
+
             
-            var slider = sender as Slider;
+                var slider = sender as Slider;
+
+                var position = e.GetPosition(slider);
+                var value = position.X / slider.ActualWidth * slider.Maximum;
+                var time = TimeSpan.FromSeconds(value);
+                var timeString = time.ToString(@"mm\:ss");
+
+
+
+                Preview.Position = time;
+                Preview.Play();
+                //change volume
+                Preview.Volume = 0;
             
-            var position = e.GetPosition(slider);
-            var value = position.X / slider.ActualWidth * slider.Maximum;
-            var time = TimeSpan.FromSeconds(value);
-            var timeString = time.ToString(@"mm\:ss");
-            
-            
-            
-            Preview.Position = time;
-            Preview.Play();
-            //wait for 0.1 second
-            System.Threading.Thread.Sleep(100);
+            await Task.Delay(1);
             Preview.Pause();
             
+
         }
 
         //mouse move on seek time slider
-        private void slider_MouseMove(object sender, MouseEventArgs e)
+        private async void slider_MouseMove(object sender, MouseEventArgs e)
         {
-            
-            
+
+
+
+
             var slider = sender as Slider;
-            
+
             var position = e.GetPosition(slider);
             var value = position.X / slider.ActualWidth * slider.Maximum;
             var time = TimeSpan.FromSeconds(value);
@@ -417,13 +451,16 @@ namespace MyMediaPlayer
 
 
 
+            //await Task.Delay(100);
             Preview.Position = time;
             Preview.Play();
             //change volume
             Preview.Volume = 0;
             //wait for 0.1 second
-            System.Threading.Thread.Sleep(100);
+            await Task.Delay(1);
+
             Preview.Pause();
+
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
