@@ -66,6 +66,12 @@ namespace MyMediaPlayer
                 string sourcePath = openFileDialog.FileName;
                 string destinationPath = $"{AppDomain.CurrentDomain.BaseDirectory}\\Images\\{openFileDialog.SafeFileName}";
 
+                if (!System.IO.Directory.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\Images"))
+                {
+                    System.IO.Directory.CreateDirectory($"{AppDomain.CurrentDomain.BaseDirectory}\\Images");
+                }
+               
+
                 if (!System.IO.File.Exists(destinationPath))
                 {
                     System.IO.File.Copy(sourcePath, destinationPath, true);
