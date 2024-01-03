@@ -231,26 +231,6 @@ namespace MyMediaPlayer
             }
         }
 
-        void shufflePlaylist()
-        {
-            var playlist = listSongs.ItemsSource as BindingList<MediaFile>;
-            if (playlist != null)
-            {
-                Random random = new Random();
-                int n = playlist.Count;
-                while (n > 1)
-                {
-                    n--;
-                    int k = random.Next(n + 1);
-                    // Hoán đổi các phần tử ở vị trí k và n
-                    var temp = playlist[k];
-                    playlist[k] = playlist[n];
-                    playlist[n] = temp;
-                }
-            }
-
-            
-        }
 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
         {
@@ -311,12 +291,10 @@ namespace MyMediaPlayer
                 if (extension == ".mp4" || extension == ".avi" || extension == ".mkv")
                 {
                     Player.Visibility = Visibility.Visible;
-                    Preview.Visibility = Visibility.Visible;
                 }
                 else
                 {
                     Player.Visibility = Visibility.Collapsed;
-                    Preview.Visibility = Visibility.Collapsed;
                 }
 
                 currentFile = selectedFile;
@@ -335,7 +313,7 @@ namespace MyMediaPlayer
                 timer.Tick += (s, e) =>
                 {
                     Timer timer = timeControlBar.DataContext as Timer;
-                    if (timer != null)
+                    if (timer != null && !isDraggingTimeSlider)
                     {
                         timer.CurrentTime = Player.Position;
                     }
