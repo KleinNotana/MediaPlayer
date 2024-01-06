@@ -12,9 +12,17 @@ namespace MyMediaPlayer
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            
             string relative = (string)value;
+           
             string folder = AppDomain.CurrentDomain.BaseDirectory;
             string absolute = $"{folder}{relative}";
+
+            if (relative == null || relative == "Images/thumbnail.png")
+            {
+                absolute = $"Images/thumbnail.png";
+            }
+
             return absolute;
         }
 
